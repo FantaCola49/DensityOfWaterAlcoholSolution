@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DensityOfWaterAlcoholSolution;
 
 namespace DensityOfWaterAlcoholSolution.BusinessLogic
 {
     /// <summary>
     /// Класс служебных проверок
     /// </summary>
-    internal class Verifications
-    {
+    public partial class Verifications
+    {        
         MainWindow window = new MainWindow();
-
+        
         /// <summary>
         /// "Содержание этанола" и "Температура" имеют значение
         /// </summary>
@@ -20,13 +22,12 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         public bool TempAndEthanolTextBoxesAreNotNULL()
         {
-            bool densityTemperatureNotNull = window.LeftTempTB.Text.Any();
-            bool ethanolContainmentNotNull = window.EthanolContainmentTB.Text.Any();
+            bool densityTemperatureNotNull = window.LeftTempTB.Text.Length != 0;
+            bool ethanolContainmentNotNull = window.EthanolContainmentTB.Text.Length != 0;
             if (densityTemperatureNotNull && ethanolContainmentNotNull)
                 return true;
             return false;
         }
-
         /// <summary>
         /// В полях "Содержание этанола" и "Температура" указаны целые числа
         /// </summary>
@@ -97,6 +98,5 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
                 return true;
             return false;
         }
-
     }
 }

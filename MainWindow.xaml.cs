@@ -26,9 +26,9 @@ namespace DensityOfWaterAlcoholSolution
             InitializeComponent();
         }
 
-        DensityCalc calculateDensity = new DensityCalc();
         private void SolutionDensityBtn(object sender, RoutedEventArgs e)
         {
+            DensityCalc calculateDensity = new DensityCalc();
             calculateDensity.SolutionDensity();
         }
     }

@@ -12,12 +12,12 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
     /// </summary>
     internal class DensityCalc
     {
-        //Verifications verificate = new Verifications();
+        Verifications verificate = new Verifications();
 
         public DensityCalc()
         {
-          //  if (!verificate.TempAndEthanolTextBoxesAreNotNULL())
-           //     MessageBox.Show("Для вычисления плотности все поля должны быть заполнены", "ВНИМАНИЕ!");
+            if (!verificate.TempAndEthanolTextBoxesAreNotNULL())
+                MessageBox.Show("Для вычисления плотности все поля должны быть заполнены", "ВНИМАНИЕ!");
         }
 
         /// <summary>
@@ -34,6 +34,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// </summary>
         public void SolutionDensity()
         {
+            if (!verificate.TemperatureIsWithinLimit()) throw new Exception("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!");
 
         }
     }
