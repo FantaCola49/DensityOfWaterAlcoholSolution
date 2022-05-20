@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DensityOfWaterAlcoholSolution.BusinessLogic;
+﻿using System.Windows;
+using DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation;
 
 namespace DensityOfWaterAlcoholSolution
 {
@@ -26,10 +13,16 @@ namespace DensityOfWaterAlcoholSolution
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Кнопка вычисления плотности раствора
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SolutionDensityBtn(object sender, RoutedEventArgs e)
         {
             DensityCalc calculateDensity = new DensityCalc();
             calculateDensity.SolutionDensity();
+            SolutinDenResultTB.Text = calculateDensity.calculatedSolutionDensity.ToString();
         }
     }
 }
