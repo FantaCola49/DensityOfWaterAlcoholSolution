@@ -20,7 +20,7 @@ namespace DensityOfWaterAlcoholSolution
         /// <param name="e"></param>
         private void SolutionDensityBtn(object sender, RoutedEventArgs e)
         {
-            DensityCalc calculateDensity = new DensityCalc();
+            FindDensity calculateDensity = new FindDensity();
             calculateDensity.SolutionDensity();
             SolutinDenResultTB.Text = calculateDensity.calculatedSolutionDensity.ToString();
         }

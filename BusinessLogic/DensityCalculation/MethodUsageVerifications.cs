@@ -14,6 +14,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// <summary>
         /// Определение метода для вычисления плотности раствора
         /// </summary>
+        /// <remarks>temperature/ethanolCont |1 int/int | 2 int/float | 3 float/int | 4 float/float</remarks>
         /// <returns>Номер метода [1;4]</returns>
         public byte DensityCalculationMethodNumber()
         {
