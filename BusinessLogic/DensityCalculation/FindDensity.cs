@@ -49,13 +49,13 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
                     break;
                 case 3:
-                    float temperature3 = Convert.ToInt32(window.LeftTempTB.Text);
+                    float temperature3 = float.Parse(window.LeftTempTB.Text);
                     int ethanolCont3 = Convert.ToInt32(window.EthanolContainmentTB.Text);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
                     break;
                 case 4:
-                    float temperature4 = Convert.ToInt32(window.LeftTempTB.Text);
-                    float ethanolCont4 = Convert.ToInt32(window.EthanolContainmentTB.Text);
+                    float temperature4 = float.Parse(window.LeftTempTB.Text);
+                    float ethanolCont4 = float.Parse(window.EthanolContainmentTB.Text);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature4, ethanolCont4);
                     break;
             }

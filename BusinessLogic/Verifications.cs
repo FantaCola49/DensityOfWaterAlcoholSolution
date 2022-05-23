@@ -43,13 +43,18 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         private bool DensTemperatureIsWithinLimit()
         {
-            float.TryParse(window.LeftTempTB.Text, out float temperature);
-            bool temperatureIsLowerThanMax = temperature < 50.0;
-            bool temperatureIsHigherThanMin = temperature > -60.0;
-            if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
-                return true;
-            MessageBox.Show("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!", "Внимание!");
+            if(double.TryParse(window.LeftTempTB.Text, out double temperature))
+            {
+                bool temperatureIsLowerThanMax = temperature < 50.0;
+                bool temperatureIsHigherThanMin = temperature > -60.0;
+                if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
+                    return true;
+                MessageBox.Show("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!", "Внимание!");
+                return false;
+            }
+            MessageBox.Show("Не удалось распознать значения температуры для вычисления плотности.");
             return false;
+            
         }
 
         /// <summary>
@@ -75,12 +80,14 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         private bool DensTempAndEthanolTextBoxesAreNotNULL()
         {
-            bool densityTemperatureNotNull = window.LeftTempTB.Text.Length != 0;
-            bool ethanolContainmentNotNull = window.EthanolContainmentTB.Text.Length != 0;
-            if (densityTemperatureNotNull && ethanolContainmentNotNull)
-                return true;
-            MessageBox.Show("Для вычисления плотности все поля должны быть заполнены", "ВНИМАНИЕ!");
-            return false;
+            bool densityTemperatureIsNull = string.IsNullOrEmpty(window.LeftTempTB.Text) | string.IsNullOrWhiteSpace(window.LeftTempTB.Text);
+            bool ethanolContainmentIsNull = string.IsNullOrEmpty(window.EthanolContainmentTB.Text) | string.IsNullOrWhiteSpace(window.EthanolContainmentTB.Text);
+            if (densityTemperatureIsNull | ethanolContainmentIsNull)
+            {
+                MessageBox.Show("Для вычисления плотности все поля должны быть заполнены", "ВНИМАНИЕ!");
+                return false;
+            }
+            return true;
         }
         
         #endregion

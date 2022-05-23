@@ -23,6 +23,7 @@ namespace DensityOfWaterAlcoholSolution
             FindDensity calculateDensity = new FindDensity();
             calculateDensity.SolutionDensity();
             SolutinDenResultTB.Text = calculateDensity.calculatedSolutionDensity.ToString();
+            return;
         }
     }
 }
