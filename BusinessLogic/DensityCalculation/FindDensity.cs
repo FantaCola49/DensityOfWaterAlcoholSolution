@@ -5,7 +5,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
     /// <summary>
     /// Нахождение плотности раствора
     /// </summary>
-    internal partial class FindDensity
+    public class FindDensity
     {
         #region Поля
         readonly MainWindow window = new MainWindow();
@@ -25,9 +25,6 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// </summary>
         public void SolutionDensity()
         {
-            //Вызов проверки данных
-            if (!verificate.DensityInputNumbersAreCorrect())
-                return;
             //Вызов функции, определяющего, какой метод вычислений использовать (Так как значение всегда будет [1;4], используем byte methodNumber)
             byte methodNumber = verificate.DensityCalculationMethodNumber();
             //switch-конструкция, определяющая на основе methodNumber, какой метод вычислений использовать
