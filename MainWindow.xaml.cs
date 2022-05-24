@@ -27,14 +27,7 @@ namespace DensityOfWaterAlcoholSolution
         private void SolutionDensityBtn(object sender, RoutedEventArgs e)
         {
             FindDensity calculateDensity = new();
-            MethodUsageVerifications verificate = new MethodUsageVerifications();
-
-            verificate.solutionTemperature = LeftTempTB.Text;
-            verificate.ethanolContainment = EthanolContainmentTB.Text;
-
-            if (!verificate.DensityInputNumbersAreCorrect())
-                return;
-            
+            calculateDensity.SetDataForDensityCalculation(LeftTempTB.Text, EthanolContainmentTB.Text);
             calculateDensity.SolutionDensity();
             SolutinDenResultTB.Text = calculateDensity.calculatedSolutionDensity.ToString();
             return;

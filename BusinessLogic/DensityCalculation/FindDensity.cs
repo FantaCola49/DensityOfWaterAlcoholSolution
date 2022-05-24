@@ -13,18 +13,39 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         readonly DensityCalculation denCalculate = new DensityCalculation();
 
         /// <summary>
-        /// Полученный результат вычислений
+        /// Температура раствора (левый текстбокс)
+        /// </summary>
+        private string solutionTemperature { get; set; }
+        /// <summary>
+        /// Количество этанола (левый текстбокс)
+        /// </summary>
+        private string ethanolContainment { get; set; }
+
+
+
+        /// <summary>
+        /// Полученная в результате вычислений плотность
         /// </summary>
         public float calculatedSolutionDensity { get; set; }
         #endregion
 
 
         #region Методы
+
+        public void SetDataForDensityCalculation(string SolutionTemperature, string EthanolContainment)
+        {
+            this.solutionTemperature = SolutionTemperature;
+            this.ethanolContainment = EthanolContainment;
+        }
+
         /// <summary>
         /// Метод, вычисляющий плотность раствора
         /// </summary>
         public void SolutionDensity()
         {
+            verificate.SetDataForDensityCalc(solutionTemperature, ethanolContainment);
+            if (!verificate.DensityInputNumbersAreCorrect())
+                return;
             //Вызов функции, определяющего, какой метод вычислений использовать (Так как значение всегда будет [1;4], используем byte methodNumber)
             byte methodNumber = verificate.DensityCalculationMethodNumber();
             //switch-конструкция, определяющая на основе methodNumber, какой метод вычислений использовать
@@ -36,23 +57,23 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                     //calculatedSolutionDensity = 0; ← как варик для всех неподходящих цифр буду возвращать 0 и всё
                     break;
                 case 1:
-                    int temperature1 = Convert.ToInt32(window.LeftTempTB.Text);
-                    int ethanolCont1 = Convert.ToInt32(window.EthanolContainmentTB.Text);
+                    int temperature1 = Convert.ToInt32(solutionTemperature); /// ёба нигга тут багулина
+                    int ethanolCont1 = Convert.ToInt32(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature1, ethanolCont1);
                     break;
                 case 2:
-                    int temperature2 = Convert.ToInt32(window.LeftTempTB.Text);
-                    float ethanolCont2 = float.Parse(window.EthanolContainmentTB.Text);
+                    float temperature2 = float.Parse(solutionTemperature);
+                    int ethanolCont2 = Convert.ToInt32(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
                     break;
                 case 3:
-                    float temperature3 = float.Parse(window.LeftTempTB.Text);
-                    int ethanolCont3 = Convert.ToInt32(window.EthanolContainmentTB.Text);
+                    int temperature3 = Convert.ToInt32(solutionTemperature);
+                    float ethanolCont3 = float.Parse(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
                     break;
                 case 4:
-                    float temperature4 = float.Parse(window.LeftTempTB.Text);
-                    float ethanolCont4 = float.Parse(window.EthanolContainmentTB.Text);
+                    float temperature4 = float.Parse(solutionTemperature);
+                    float ethanolCont4 = float.Parse(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature4, ethanolCont4);
                     break;
             }

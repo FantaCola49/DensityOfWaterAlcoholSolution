@@ -12,16 +12,21 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
     /// Класс служебных проверок
     /// </summary>
     public class Verifications : MainWindow
-    {        
-        //MainWindow window = new MainWindow();
-
+    {     
+        
         #region Нахождение плотности раствора
 
         /// <summary>
         /// Температура раствора (левый текстбокс)
         /// </summary>
-        public string solutionTemperature { get; set; }
-        public string ethanolContainment { get; set; }
+        private string solutionTemperature { get; set; }
+        private string ethanolContainment { get; set; }
+
+        public void SetDataForDensityCalc(string SolutionTemperature, string EthanolContainment)
+        {
+            solutionTemperature = SolutionTemperature;
+            ethanolContainment = EthanolContainment;
+        }
 
         #region Проверка корректности входных данных
 
@@ -176,6 +181,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
 
         ////TODO ↓! 
         #region Нахождение процента содержания этанола
+
 
 
         #endregion
