@@ -130,7 +130,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// </summary>
         /// <remarks>Нахождение плотности раствора</remarks>
         /// <returns></returns>
-        protected bool IntEthanolContainment_FloatTemperature()
+        protected bool IntEthanolContainment_DoubleTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
@@ -146,7 +146,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// </summary>
         /// <remarks>Нахождение плотности раствора</remarks>
         /// <returns></returns>
-        protected bool FloatEthanolContainment_IntTemperature()
+        protected bool DoubleEthanolContainment_IntTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
@@ -162,7 +162,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// </summary>
         /// <remarks>Нахождение плотности раствора</remarks>
         /// <returns></returns>
-        protected bool FloatEthanolContainment_FloatTemperature()
+        protected bool DoubleEthanolContainment_DoubleTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
@@ -182,6 +182,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         ////TODO ↓! 
         #region Нахождение процента содержания этанола
 
+        
 
 
         #endregion

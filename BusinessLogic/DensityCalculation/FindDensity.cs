@@ -26,7 +26,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// <summary>
         /// Полученная в результате вычислений плотность
         /// </summary>
-        public float calculatedSolutionDensity { get; set; }
+        public double calculatedSolutionDensity { get; set; }
         #endregion
 
 
@@ -62,18 +62,18 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature1, ethanolCont1);
                     break;
                 case 2:
-                    float temperature2 = float.Parse(solutionTemperature);
+                    double temperature2 = double.Parse(solutionTemperature);
                     int ethanolCont2 = Convert.ToInt32(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
                     break;
                 case 3:
                     int temperature3 = Convert.ToInt32(solutionTemperature);
-                    float ethanolCont3 = float.Parse(ethanolContainment);
+                    double ethanolCont3 = double.Parse(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
                     break;
                 case 4:
-                    float temperature4 = float.Parse(solutionTemperature);
-                    float ethanolCont4 = float.Parse(ethanolContainment);
+                    double temperature4 = double.Parse(solutionTemperature);
+                    double ethanolCont4 = double.Parse(ethanolContainment);
                     calculatedSolutionDensity = denCalculate.CalculateDensity(temperature4, ethanolCont4);
                     break;
             }

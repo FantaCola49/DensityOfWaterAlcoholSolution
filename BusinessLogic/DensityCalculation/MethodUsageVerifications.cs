@@ -22,11 +22,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
 
             if (IntEthanolContainment_IntTemperature())
                 methodNumber = 1;
-            if(IntEthanolContainment_FloatTemperature())
+            if(IntEthanolContainment_DoubleTemperature())
                 methodNumber = 2;
-            if(FloatEthanolContainment_IntTemperature())
+            if(DoubleEthanolContainment_IntTemperature())
                 methodNumber = 3;
-            if (FloatEthanolContainment_FloatTemperature())
+            if (DoubleEthanolContainment_DoubleTemperature())
                 methodNumber = 4;         
             return methodNumber;
         }
