@@ -56,7 +56,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         {
             try
             {
-                double temperature = Convert.ToDouble(solutionTemperature);
+                //double temperature = Convert.ToDouble(solutionTemperature);
+                double temperature = solutionTemperature.DoubleParseAdvanced();
                 bool temperatureIsLowerThanMax = temperature < 50.0;
                 bool temperatureIsHigherThanMin = temperature > -60.0;
                 if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
@@ -78,13 +79,22 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         private bool DensEthanolContainmentIsWithinLimit()
         {
-            double ethanol = Convert.ToDouble(ethanolContainment);
-            bool ethanolIsLowerThanMax = ethanol <= 100.0;
-            bool ethanolIsHigherThanMin = ethanol >= 0.0;
-            if (ethanolIsLowerThanMax && ethanolIsHigherThanMin)
-                return true;
-            MessageBox.Show("Содержание этанола в растворе не должно превышать 100.0 и быть ниже, чем 0.00!", "Ошибка ввода даных");
-            return false;
+            //double ethanol = Convert.ToDouble(ethanolContainment);
+            try
+            {
+                double ethanol = ethanolContainment.DoubleParseAdvanced();
+                bool ethanolIsLowerThanMax = ethanol <= 100.0;
+                bool ethanolIsHigherThanMin = ethanol >= 0.0;
+                if (ethanolIsLowerThanMax && ethanolIsHigherThanMin)
+                    return true;
+                MessageBox.Show("Содержание этанола в растворе не должно превышать 100.0 и быть ниже, чем 0.00!", "Ошибка ввода даных");
+                return false;
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось распознать значения температуры для вычисления плотности.");
+                return false;
+            }
         }
 
         /// <summary>
@@ -117,9 +127,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         protected bool IntEthanolContainment_IntTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
+            int commaIndexInEthanol = ethanolContainment.IndexOf(".");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            bool ethanolContainmentIsInteger = (pointIndexInEthanol == -1);
-            bool temperatureIsInteger = (pointIndexInTemperature == -1);
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool ethanolContainmentIsInteger = (pointIndexInEthanol == -1) || (commaIndexInEthanol == -1);
+            bool temperatureIsInteger = (pointIndexInTemperature == -1) || (commaIndexInTemperature == -1);
             if (ethanolContainmentIsInteger && temperatureIsInteger)
                 return true;
             return false;
@@ -133,9 +145,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         protected bool IntEthanolContainment_DoubleTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
+            int commaIndexInEthanol = ethanolContainment.IndexOf(".");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            bool ethanolContainmentIsInteger = (pointIndexInEthanol == -1);
-            bool temperatureIsInteger = (pointIndexInTemperature != -1);
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool ethanolContainmentIsInteger = (pointIndexInEthanol == -1) || (commaIndexInEthanol == -1);
+            bool temperatureIsInteger = (pointIndexInTemperature != -1) || (commaIndexInTemperature != -1);
             if (ethanolContainmentIsInteger && temperatureIsInteger)
                 return true;
             return false;
@@ -149,9 +163,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         protected bool DoubleEthanolContainment_IntTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
+            int commaIndexInEthanol = ethanolContainment.IndexOf(".");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            bool ethanolContainmentIsInteger = (pointIndexInEthanol != -1);
-            bool temperatureIsInteger = (pointIndexInTemperature == -1);
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool ethanolContainmentIsInteger = (pointIndexInEthanol != -1) || (commaIndexInEthanol != -1);
+            bool temperatureIsInteger = (pointIndexInTemperature == -1) || (commaIndexInTemperature == -1);
             if (ethanolContainmentIsInteger && temperatureIsInteger)
                 return true;
             return false;
@@ -165,9 +181,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         protected bool DoubleEthanolContainment_DoubleTemperature()
         {
             int pointIndexInEthanol = ethanolContainment.IndexOf(",");
+            int commaIndexInEthanol = ethanolContainment.IndexOf(".");
             int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            bool ethanolContainmentIsInteger = (pointIndexInEthanol != -1);
-            bool temperatureIsInteger = (pointIndexInTemperature != -1);
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool ethanolContainmentIsInteger = (pointIndexInEthanol != -1) || (commaIndexInEthanol != -1);
+            bool temperatureIsInteger = (pointIndexInTemperature != -1) || (commaIndexInTemperature != -1);
             if (ethanolContainmentIsInteger && temperatureIsInteger)
                 return true;
             return false;

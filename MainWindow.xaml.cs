@@ -13,7 +13,7 @@ namespace DensityOfWaterAlcoholSolution
         private readonly Regex signFilter = new Regex(@"\-");
         private readonly Regex digitalFilter = new Regex(@"\d");
         private readonly Regex pointFilter = new Regex(@"\,");
-        //private readonly Regex pointFilter2 = new Regex(@"\.");
+        private readonly Regex pointFilter2 = new Regex(@"\.");
 
         public MainWindow()
         {
@@ -48,8 +48,8 @@ namespace DensityOfWaterAlcoholSolution
                 e.Handled = false;
             else if (pointFilter.IsMatch(e.Text))
                 e.Handled = false;
-           // else if (pointFilter2.IsMatch(e.Text))
-           //     e.Handled = false;
+            else if (pointFilter2.IsMatch(e.Text))
+                e.Handled = false;
             else
                 e.Handled = true;
         }

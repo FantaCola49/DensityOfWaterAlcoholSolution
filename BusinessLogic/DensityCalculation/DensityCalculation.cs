@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Windows;
 
@@ -81,8 +80,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                     if((STR_nearestDensityWithEthanolAsGiven.IndexOf("-") == -1) && (STR_nearestDensityWithEthanolMENOSone.IndexOf("-") == -1))
                     {
                         //После проверки парсим значения
-                        double densityEthanolAsGiven = double.Parse(STR_nearestDensityWithEthanolAsGiven);
-                        double densityEtanolMENOSOne = double.Parse(STR_nearestDensityWithEthanolMENOSone);
+                        double densityEthanolAsGiven = STR_nearestDensityWithEthanolAsGiven.DoubleParseAdvanced();
+                        double densityEtanolMENOSOne = STR_nearestDensityWithEthanolMENOSone.DoubleParseAdvanced();
                         double densityDelta = densityEtanolMENOSOne - densityEthanolAsGiven;
                         // Находим целую часть от данной доли этанола в растворе
                         double ethanolReminder = Math.Ceiling(ethanolCont) - ethanolCont;
@@ -122,8 +121,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                     if ((STR_nearestDensityWithTempAsGiven.IndexOf("-") == -1) && (STR_nearestDensityWithTemp1GradeMore.IndexOf("-") == -1))
                     {
                         // Считаю по своей формуле
-                        double densityTempAsGiven = double.Parse(STR_nearestDensityWithTempAsGiven);
-                        double densityTempPLUSOne = double.Parse(STR_nearestDensityWithTemp1GradeMore);
+                        double densityTempAsGiven = STR_nearestDensityWithTempAsGiven.DoubleParseAdvanced();
+                        double densityTempPLUSOne = STR_nearestDensityWithTemp1GradeMore.DoubleParseAdvanced();
                         double densityDelta = densityTempAsGiven - densityTempPLUSOne;
                         double temperatureReminder = Math.Ceiling(temperature) - temperature;
 
@@ -163,15 +162,15 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                         STR_nearestDensityWithEthanolMENOSoneTemperaturePLUSone != "-"
                         )
                     {
-                        double densityTempAsGiven = double.Parse(STR_nearestDensityWithTempAsGiven);
-                        double densityTempPLUSOne = double.Parse(STR_nearestDensityWithTemp1GradeMore);
+                        double densityTempAsGiven = STR_nearestDensityWithTempAsGiven.DoubleParseAdvanced();
+                        double densityTempPLUSOne = STR_nearestDensityWithTemp1GradeMore.DoubleParseAdvanced();
                         double densityDelta_Temperature = densityTempAsGiven - densityTempPLUSOne;
                         double temperatureReminder = Math.Ceiling(temperature) - temperature;
 
                         double solutionDensity_A = (densityDelta_Temperature * temperatureReminder) + densityTempPLUSOne;
                         
-                        double densityEtanolMENOSOne = double.Parse(STR_nearestDensityWithEthanolMENOSone);
-                        double densityEthanolMENOSOneTemperaturePlusOne = double.Parse(STR_nearestDensityWithEthanolMENOSoneTemperaturePLUSone);
+                        double densityEtanolMENOSOne = STR_nearestDensityWithEthanolMENOSone.DoubleParseAdvanced();
+                        double densityEthanolMENOSOneTemperaturePlusOne = STR_nearestDensityWithEthanolMENOSoneTemperaturePLUSone.DoubleParseAdvanced();
                         double ethanolReminder = Math.Ceiling(ethanolCont) - ethanolCont;
 
                         double solutionDensity_B = (temperatureReminder * (densityEtanolMENOSOne - densityEthanolMENOSOneTemperaturePlusOne)) + densityEthanolMENOSOneTemperaturePlusOne;
