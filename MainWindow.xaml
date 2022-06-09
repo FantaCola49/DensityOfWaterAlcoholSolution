@@ -58,11 +58,11 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Yu Gothic UI Semibold" FontSize="16" TextAlignment="Center"><Run Text="Плотность, г"/><Run Text="/"/><Run Text="мл"/></TextBlock>
             <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Температура, °C" TextWrapping="Wrap" FontFamily="Yu Gothic UI Semibold" FontSize="16" TextAlignment="Center"></TextBlock>
 
-            <TextBox Name="SolutionDensityTB" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="20"></TextBox>
-            <TextBox Name="SolutionTemperatureTB" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="20"></TextBox>
+            <TextBox Name="SolutionDensityTB" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="20" PreviewTextInput="NumberValidationTextBox"></TextBox>
+            <TextBox Name="SolutionTemperatureTB" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="20" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-            <TextBox Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Height="20" Margin="0 10 0 0" IsReadOnly="True"></TextBox>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="100" Height="30" Margin="0 0 0 10" Content="Вычислить"/>
+            <TextBox Name="SolutinEthanolResultTB" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Height="20" Margin="0 10 0 0" IsReadOnly="True"></TextBox>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="100" Height="30" Margin="0 0 0 10" Content="Вычислить" Click="EthanolContainmentBtn"/>
         </Grid>
         
         

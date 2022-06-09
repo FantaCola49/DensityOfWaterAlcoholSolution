@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation;
+using DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 
@@ -31,6 +32,20 @@ namespace DensityOfWaterAlcoholSolution
             calculateDensity.SetDataForDensityCalculation(LeftTempTB.Text, EthanolContainmentTB.Text);
             calculateDensity.SolutionDensity();
             SolutinDenResultTB.Text = calculateDensity.calculatedSolutionDensity.ToString();
+            return;
+        }
+
+        /// <summary>
+        /// Кнопка вычисления процента содержания этанола в растворе
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EthanolContainmentBtn(object sender, RoutedEventArgs e)
+        {
+            FindEthanol calculateEthanol = new();
+            calculateEthanol.SetDataForEthanolCalculation(SolutionTemperatureTB.Text, SolutionDensityTB.Text);
+            calculateEthanol.SolutionEthanolContainment();
+            SolutinEthanolResultTB.Text = calculateEthanol.calculatedEthanolContainment.ToString();
             return;
         }
         

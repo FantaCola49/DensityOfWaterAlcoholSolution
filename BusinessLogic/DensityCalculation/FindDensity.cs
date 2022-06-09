@@ -8,7 +8,6 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
     public class FindDensity
     {
         #region Поля
-        readonly MainWindow window = new MainWindow();
         readonly MethodUsageVerifications verificate = new MethodUsageVerifications();
         readonly DensityCalculation denCalculate = new DensityCalculation();
 
@@ -16,12 +15,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// Температура раствора (левый текстбокс)
         /// </summary>
         private string solutionTemperature { get; set; }
+        
         /// <summary>
         /// Количество этанола (левый текстбокс)
         /// </summary>
         private string ethanolContainment { get; set; }
-
-
 
         /// <summary>
         /// Полученная в результате вычислений плотность

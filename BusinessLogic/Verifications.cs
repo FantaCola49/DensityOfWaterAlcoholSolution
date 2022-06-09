@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DensityOfWaterAlcoholSolution;
 
 namespace DensityOfWaterAlcoholSolution.BusinessLogic
 {
@@ -17,15 +12,20 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         #region Нахождение плотности раствора
 
         /// <summary>
-        /// Температура раствора (левый текстбокс)
+        /// Температура раствора
         /// </summary>
+        /// <remarks>Используется при нахождении плотности раствора (левый текстбокс)</remarks>
         private string solutionTemperature { get; set; }
+        /// <summary>
+        /// Содержание етанола
+        /// </summary>
+        /// <remarks>Используется при нахождении плотности раствора (левый текстбокс)</remarks>
         private string ethanolContainment { get; set; }
 
         public void SetDataForDensityCalc(string SolutionTemperature, string EthanolContainment)
         {
-            solutionTemperature = SolutionTemperature;
-            ethanolContainment = EthanolContainment;
+            this.solutionTemperature = SolutionTemperature;
+            this.ethanolContainment = EthanolContainment;
         }
 
         #region Проверка корректности входных данных
@@ -56,7 +56,6 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         {
             try
             {
-                //double temperature = Convert.ToDouble(solutionTemperature);
                 double temperature = solutionTemperature.DoubleParseAdvanced();
                 bool temperatureIsLowerThanMax = temperature < 50.0;
                 bool temperatureIsHigherThanMin = temperature > -60.0;
@@ -79,7 +78,6 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         private bool DensEthanolContainmentIsWithinLimit()
         {
-            //double ethanol = Convert.ToDouble(ethanolContainment);
             try
             {
                 double ethanol = ethanolContainment.DoubleParseAdvanced();
@@ -196,12 +194,146 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         #endregion
 
 
-
-        ////TODO ↓! 
         #region Нахождение процента содержания этанола
 
-        
+        /// <summary>
+        /// Температура раствора
+        /// </summary>
+        /// <remarks>Используется при нахождении содержания этанола (правый текстБокс)</remarks>
+        private string temperatureOfSolution { get;set;}
 
+        /// <summary>
+        /// Плотность раствора
+        /// </summary>
+        /// <remarks>Используется при нахождении содержания этанола (правый текстБокс)</remarks>
+        private string densityOfSolution { get;set;}
+
+        public void SetDataForEthanolCalc(string SolutionTemperature, string SolutionDensity)
+        {
+            this.temperatureOfSolution = SolutionTemperature;
+            this.densityOfSolution = SolutionDensity;
+        }
+
+        #region Проверка корректности входных данных
+
+        /// <summary>
+        /// Данные "Температуры" и "Плотность раствора" пригодны для работы
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        public bool EthanolInputNumbersAreCorrect()
+        {
+            if (!EthanolTempAndDensityTextBoxesAreNotNULL())
+                return false;
+            if (!EthanolTemperatureIsWithinLimit())
+                return false;
+            if (!EthanolSolutionDensityIsWithinLimit())
+                return false;
+            return true;
+        }
+
+        /// <summary>
+        /// Температура раствора внутри допутимого диапазона
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        private bool EthanolTemperatureIsWithinLimit()
+        {
+            try
+            {
+                double temperature = temperatureOfSolution.DoubleParseAdvanced();
+                bool temperatureIsLowerThanMax = temperature < 50.0;
+                bool temperatureIsHigherThanMin = temperature > -60.0;
+                if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
+                    return true;
+                MessageBox.Show("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!", "Внимание!");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось распознать значения температуры для вычисления содержания этанола.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// "Плотность раствора" и "Температура" имеют значение
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        private bool EthanolTempAndDensityTextBoxesAreNotNULL()
+        {
+            bool etanolTemperatureIsNull = string.IsNullOrEmpty(temperatureOfSolution) | string.IsNullOrWhiteSpace(temperatureOfSolution);
+            bool ethanolDensityIsNull = string.IsNullOrEmpty(ethanolContainment) | string.IsNullOrWhiteSpace(ethanolContainment);
+
+            if (etanolTemperatureIsNull | ethanolDensityIsNull)
+            {
+                MessageBox.Show("Для вычисления плотности все поля должны быть заполнены", "ВНИМАНИЕ!");
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Плотность раствора внутри допутимого диапазона
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        private bool EthanolSolutionDensityIsWithinLimit()
+        {
+            try
+            {
+                double density = densityOfSolution.DoubleParseAdvanced();
+                bool densityIsLowerThanMax = density < 1;
+                bool densityIsHigherThanMin = density > 0;
+                if (densityIsLowerThanMax && densityIsHigherThanMin)
+                    return true;
+                MessageBox.Show("Неверные данные! Плотность раствора должна быть от 0 до 1!", "Внимание!");
+                return false;                
+            }
+            catch 
+            {
+                MessageBox.Show("Не удалось распознать значения плотности для вычисления содержания этанола.");
+                return false;
+            } 
+
+        }
+
+        #endregion
+
+        #region Определение дробных и целых чисел во входных данных
+
+        /// <summary>
+        /// В поле "Температура" указано целое число
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        protected bool TemperatureIsInteger()
+        {
+            int pointIndexInTemperature = solutionTemperature.IndexOf(",");
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool temperatureIsInteger = (pointIndexInTemperature == -1) || (commaIndexInTemperature == -1);
+            if (temperatureIsInteger)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// В поле "Температура" указано дробное число
+        /// </summary>
+        /// <remarks>Нахождение процента содержания этанола</remarks>
+        /// <returns></returns>
+        protected bool TemperatureIsFloat()
+        {
+            int pointIndexInTemperature = solutionTemperature.IndexOf(",");
+            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            bool temperatureIsFloat = (pointIndexInTemperature != -1) || (commaIndexInTemperature != -1);
+            if (temperatureIsFloat)
+                return true;
+            return false;
+        }
+
+        #endregion
 
         #endregion
     }

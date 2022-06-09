@@ -35,9 +35,17 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// Определение метода для вычисления процента содержания этанола
         /// </summary>
         /// <returns>Номер метода [1;4]</returns>
-        public byte EthanolContainCalculationMethodNumber() ////TODO!!!!!!!!!!!!!!!
+        public byte EthanolContainCalculationMethodNumber()
         {
             byte methodNumber = 0;
+
+            /* Всего два метода, т.к. нельзя доподлинно установить, что было указано табличное значение плотности.
+             * Следовательно, Метод №1 будет выполняться всегда, когда указана целочисленная температура.*/
+
+            if (TemperatureIsInteger())
+                methodNumber = 1;
+            if (TemperatureIsFloat())
+                methodNumber = 3;
             
             return methodNumber;
         }

@@ -14,7 +14,6 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         #region Поля
         private DataSet ds = new DataSet();
         private string dirFile = Directory.GetCurrentDirectory();
-
         #endregion
 
         /// <summary>
