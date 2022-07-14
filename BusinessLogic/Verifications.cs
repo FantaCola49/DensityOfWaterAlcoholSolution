@@ -57,8 +57,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
             try
             {
                 double temperature = solutionTemperature.DoubleParseAdvanced();
-                bool temperatureIsLowerThanMax = temperature < 50.0;
-                bool temperatureIsHigherThanMin = temperature > -60.0;
+                bool temperatureIsLowerThanMax = temperature <= 50.0;
+                bool temperatureIsHigherThanMin = temperature >= -60.0;
                 if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
                     return true;
                 MessageBox.Show("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!", "Внимание!");
@@ -242,8 +242,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
             try
             {
                 double temperature = temperatureOfSolution.DoubleParseAdvanced();
-                bool temperatureIsLowerThanMax = temperature < 50.0;
-                bool temperatureIsHigherThanMin = temperature > -60.0;
+                bool temperatureIsLowerThanMax = temperature <= 50.0;
+                bool temperatureIsHigherThanMin = temperature >= -60.0;
                 if (temperatureIsLowerThanMax && temperatureIsHigherThanMin)
                     return true;
                 MessageBox.Show("Неверные данные! Температура раствора должна быть от -60 до 50 градусов!", "Внимание!");
@@ -264,7 +264,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         private bool EthanolTempAndDensityTextBoxesAreNotNULL()
         {
             bool etanolTemperatureIsNull = string.IsNullOrEmpty(temperatureOfSolution) | string.IsNullOrWhiteSpace(temperatureOfSolution);
-            bool ethanolDensityIsNull = string.IsNullOrEmpty(ethanolContainment) | string.IsNullOrWhiteSpace(ethanolContainment);
+            bool ethanolDensityIsNull = string.IsNullOrEmpty(densityOfSolution) | string.IsNullOrWhiteSpace(densityOfSolution);
 
             if (etanolTemperatureIsNull | ethanolDensityIsNull)
             {
@@ -310,8 +310,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         protected bool TemperatureIsInteger()
         {
-            int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            int pointIndexInTemperature = temperatureOfSolution.IndexOf(",");
+            int commaIndexInTemperature = temperatureOfSolution.IndexOf(".");
             bool temperatureIsInteger = (pointIndexInTemperature == -1) || (commaIndexInTemperature == -1);
             if (temperatureIsInteger)
                 return true;
@@ -325,8 +325,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic
         /// <returns></returns>
         protected bool TemperatureIsFloat()
         {
-            int pointIndexInTemperature = solutionTemperature.IndexOf(",");
-            int commaIndexInTemperature = solutionTemperature.IndexOf(".");
+            int pointIndexInTemperature = temperatureOfSolution.IndexOf(",");
+            int commaIndexInTemperature = temperatureOfSolution.IndexOf(".");
             bool temperatureIsFloat = (pointIndexInTemperature != -1) || (commaIndexInTemperature != -1);
             if (temperatureIsFloat)
                 return true;

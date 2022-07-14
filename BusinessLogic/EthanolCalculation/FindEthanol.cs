@@ -32,6 +32,11 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
 
         #region Методы
 
+        /// <summary>
+        /// Просеттить данные для вычисления этанола
+        /// </summary>
+        /// <param name="SolutionTemperature"></param>
+        /// <param name="SolutionDensity"></param>
         public void SetDataForEthanolCalculation(string SolutionTemperature, string SolutionDensity)
         {
             this.solutionDensity = SolutionDensity;
@@ -44,8 +49,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
         /// <exception cref="Exception"></exception>
         public void SolutionEthanolContainment()
         {
-            verificate.SetDataForDensityCalc(solutionTemperature, solutionDensity);
-            if (!verificate.DensityInputNumbersAreCorrect())
+            verificate.SetDataForEthanolCalc(solutionTemperature, solutionDensity);
+            if (!verificate.EthanolInputNumbersAreCorrect())
                 return;
             byte methodNumber = verificate.EthanolContainCalculationMethodNumber();
 

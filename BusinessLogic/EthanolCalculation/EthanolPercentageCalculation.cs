@@ -87,7 +87,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                             double densityEthanolPLUSne = STR_nearestDensityWithEthanol1PercentMore.DoubleParseAdvanced();
                             double densityDelta = densityEthanolAsGiven - densityEthanolPLUSne;
 
-                            double ethanolContainment = G - Math.Round((density - densityEthanolPLUSne) / (densityDelta), 2);
+                            double ethanolContainment = G - 1 + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 2);
 
                             return ethanolContainment;
                         }
@@ -115,8 +115,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                 {
                     for (int G = 0; G <= 100; G++)
                     {
-                        if (Convert.ToDouble(ds.Tables[0].Rows[i][G]) >= density &&
-                            Convert.ToDouble(ds.Tables[0].Rows[i][G + 1]) <= density)
+                        if ((ds.Tables[0].Rows[i][G]).ToString().DoubleParseAdvanced() >= density &&
+                            (ds.Tables[0].Rows[i][G + 1]).ToString().DoubleParseAdvanced() <= density)
                         {
                             string STR_nearestDensityWithTempAsGiven = ds.Tables[0].Rows[i][G + 1].ToString();
                             string STR_nearestDensityWithTemp1GradeMore = ds.Tables[0].Rows[i + 1][G + 1].ToString();

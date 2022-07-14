@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Pict\hand.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,16 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="DensityData\data2.xml">
+    <Content Include="DensityData\data2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <Resource Include="Resources\Pict\Neon1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
 </Project>

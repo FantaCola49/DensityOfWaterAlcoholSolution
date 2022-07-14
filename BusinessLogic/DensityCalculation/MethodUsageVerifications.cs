@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
+﻿namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
 {
     /// <summary>
     /// Класс, определяющий, какие методы использовать для вычислений
@@ -34,7 +28,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
         /// <summary>
         /// Определение метода для вычисления процента содержания этанола
         /// </summary>
-        /// <returns>Номер метода [1;4]</returns>
+        /// <returns>Номер метода [1;3]</returns>
         public byte EthanolContainCalculationMethodNumber()
         {
             byte methodNumber = 0;

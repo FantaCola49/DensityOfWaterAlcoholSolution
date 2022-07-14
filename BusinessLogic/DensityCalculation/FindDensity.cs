@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
 {
@@ -47,37 +48,39 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
             //Вызов функции, определяющего, какой метод вычислений использовать (Так как значение всегда будет [1;4], используем byte methodNumber)
             byte methodNumber = verificate.DensityCalculationMethodNumber();
             //switch-конструкция, определяющая на основе methodNumber, какой метод вычислений использовать
-            switch(methodNumber)
+            try
             {
-                case 0:
-                    throw new Exception("Ошибка в определении входных чисел для вычисления плотности раствора. Осторожно! Принимаются только целые значения" +
-                        "и дробные числа в русской культуре");
-                    //calculatedSolutionDensity = 0; ← как варик для всех неподходящих цифр буду возвращать 0 и всё
-                    break;
-                case 1:
-                    int temperature1 = Convert.ToInt32(solutionTemperature);
-                    int ethanolCont1 = Convert.ToInt32(ethanolContainment);
-                    calculatedSolutionDensity = denCalculate.CalculateDensity(temperature1, ethanolCont1);
-                    break;
-                case 2:
-                    //double temperature2 = double.Parse(solutionTemperature);
-                    double temperature2 = solutionTemperature.DoubleParseAdvanced();
-                    int ethanolCont2 = Convert.ToInt32(ethanolContainment);
-                    calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
-                    break;
-                case 3:
-                    int temperature3 = Convert.ToInt32(solutionTemperature);
-                    //double ethanolCont3 = double.Parse(ethanolContainment);
-                    double ethanolCont3 = ethanolContainment.DoubleParseAdvanced();
-                    calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
-                    break;
-                case 4:
-                    //double temperature4 = double.Parse(solutionTemperature);
-                    double temperature4 = solutionTemperature.DoubleParseAdvanced();
-                    //double ethanolCont4 = double.Parse(ethanolContainment);
-                    double ethanolCont4 = ethanolContainment.DoubleParseAdvanced();
-                    calculatedSolutionDensity = denCalculate.CalculateDensity(temperature4, ethanolCont4);
-                    break;
+                switch (methodNumber)
+                {
+                    case 0:
+                        throw new Exception("Ошибка в определении входных чисел для вычисления плотности раствора. Осторожно! Принимаются только целые значения" +
+                            "и дробные числа в русской культуре");
+                        break;
+                    case 1:
+                        int temperature1 = Convert.ToInt32(solutionTemperature);
+                        int ethanolCont1 = Convert.ToInt32(ethanolContainment);
+                        calculatedSolutionDensity = denCalculate.CalculateDensity(temperature1, ethanolCont1);
+                        break;
+                    case 2:
+                        double temperature2 = solutionTemperature.DoubleParseAdvanced();
+                        int ethanolCont2 = Convert.ToInt32(ethanolContainment);
+                        calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
+                        break;
+                    case 3:
+                        int temperature3 = Convert.ToInt32(solutionTemperature);
+                        double ethanolCont3 = ethanolContainment.DoubleParseAdvanced();
+                        calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
+                        break;
+                    case 4:
+                        double temperature4 = solutionTemperature.DoubleParseAdvanced();
+                        double ethanolCont4 = ethanolContainment.DoubleParseAdvanced();
+                        calculatedSolutionDensity = denCalculate.CalculateDensity(temperature4, ethanolCont4);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неизвестный формат данных");
             }
         }
         #endregion
