@@ -6,4 +6,4 @@
 **Важно:** для корректной работы программы запускаемый файл и DensityData должны находиться в одной папке для успешной работы программы.
 
 # Главное окно программы
-![Главное окно программы](https://github.com/FantaCola49/DensityOfWaterAlcoholSolution/Resources/Demo/1.JPG)
+![Главное окно программы](https://github.com/FantaCola49/DensityOfWaterAlcoholSolution/blob/master/Resources/Demo/1.JPG)
