@@ -26,4 +26,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Demo\" />
+  </ItemGroup>
+
 </Project>
