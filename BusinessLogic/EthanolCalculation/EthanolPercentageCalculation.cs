@@ -86,9 +86,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                             double densityEthanolAsGiven = STR_nearestDensityWithEthanolAsGiven.DoubleParseAdvanced();
                             double densityEthanolPLUSne = STR_nearestDensityWithEthanol1PercentMore.DoubleParseAdvanced();
                             double densityDelta = densityEthanolAsGiven - densityEthanolPLUSne;
-                            if (G > 90) G--;
 
-                            double ethanolContainment = G + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 4);
+                            double ethanolContainment = G - 1  + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 4);
 
                             return ethanolContainment;
                         }
