@@ -8,7 +8,7 @@
         ResizeMode="NoResize">
     <Grid Style="{DynamicResource BackGroundGrid}">
         <Grid.Background>
-            <ImageBrush ImageSource="Resources\Pict\Neon1.jpg"/>
+            <ImageBrush ImageSource="Resources\Pict\Dark1.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

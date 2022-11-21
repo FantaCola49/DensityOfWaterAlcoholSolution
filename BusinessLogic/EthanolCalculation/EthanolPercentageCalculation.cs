@@ -86,8 +86,9 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                             double densityEthanolAsGiven = STR_nearestDensityWithEthanolAsGiven.DoubleParseAdvanced();
                             double densityEthanolPLUSne = STR_nearestDensityWithEthanol1PercentMore.DoubleParseAdvanced();
                             double densityDelta = densityEthanolAsGiven - densityEthanolPLUSne;
+                            if (G > 90) G--;
 
-                            double ethanolContainment = G - 1 + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 2);
+                            double ethanolContainment = G + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 4);
 
                             return ethanolContainment;
                         }
@@ -115,7 +116,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                 {
                     for (int G = 0; G <= 100; G++)
                     {
-                        if ((ds.Tables[0].Rows[i][G]).ToString().DoubleParseAdvanced() >= density &&
+                        if ((ds.Tables[0].Rows[i][G]).ToString().DoubleParseAdvanced() >= density &
                             (ds.Tables[0].Rows[i][G + 1]).ToString().DoubleParseAdvanced() <= density)
                         {
                             string STR_nearestDensityWithTempAsGiven = ds.Tables[0].Rows[i][G + 1].ToString();
@@ -140,10 +141,10 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                                 double solutionDensity_B = (temperatureReminder * (densityEtanolMENOSOne - densityEthanolMENOSOneTemperaturePlusOne)) + densityEthanolMENOSOneTemperaturePlusOne;
 
                                 double densityDelta = solutionDensity_B - solutionDensity_A;
+                                
+                                double ethanolPercentage = (G - 1) + (1 - ((density - solutionDensity_A) / densityDelta));
 
-                                double ethanolPercentage = G + (1 - ((density - solutionDensity_A) / densityDelta));
-
-                                return Math.Round(ethanolPercentage, 2);
+                                return Math.Round(ethanolPercentage, 4);
                             }
                         }
                     }

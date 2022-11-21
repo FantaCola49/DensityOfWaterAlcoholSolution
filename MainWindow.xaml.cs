@@ -57,13 +57,10 @@ namespace DensityOfWaterAlcoholSolution
         /// <param name="e"></param>
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            if (signFilter.IsMatch(e.Text))
-                e.Handled = false;
-            else if (digitalFilter.IsMatch(e.Text))
-                e.Handled = false;
-            else if (pointFilter.IsMatch(e.Text))
-                e.Handled = false;
-            else if (pointFilter2.IsMatch(e.Text))
+            if (signFilter.IsMatch(e.Text)    ||
+                pointFilter.IsMatch(e.Text)   ||
+                pointFilter2.IsMatch(e.Text)  ||
+                digitalFilter.IsMatch(e.Text))
                 e.Handled = false;
             else
                 e.Handled = true;

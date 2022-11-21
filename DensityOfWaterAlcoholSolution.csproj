@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <None Remove="DensityData\data2.xml" />
-    <None Remove="Resources\Pict\Neon1.jpg" />
+    <None Remove="Resources\Pict\Dark1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Resource Include="Resources\Pict\Neon1.jpg">
+    <Resource Include="Resources\Pict\Dark1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

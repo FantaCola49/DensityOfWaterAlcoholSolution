@@ -85,7 +85,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                         // Находим целую часть от данной доли этанола в растворе
                         double ethanolReminder = Math.Ceiling(ethanolCont) - ethanolCont;
 
-                        double solutionDensity = Math.Round((densityDelta * ethanolReminder) + densityEthanolAsGiven, 5);
+                        double solutionDensity = Math.Round((densityDelta * ethanolReminder) + densityEthanolAsGiven, 6);
                         return solutionDensity;
                     }
                 }
@@ -125,7 +125,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                         double densityDelta = densityTempAsGiven - densityTempPLUSOne;
                         double temperatureReminder = Math.Ceiling(temperature) - temperature;
 
-                        double solutionDensity = Math.Round((densityDelta * temperatureReminder) + densityTempPLUSOne, 5);
+                        double solutionDensity = Math.Round((densityDelta * temperatureReminder) + densityTempPLUSOne, 6);
                         return solutionDensity;
                     }
                 }
@@ -175,7 +175,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                         double solutionDensity_B = (temperatureReminder * (densityEtanolMENOSOne - densityEthanolMENOSOneTemperaturePlusOne)) + densityEthanolMENOSOneTemperaturePlusOne;
 
 
-                        double solutionDensity = Math.Round((ethanolReminder * (solutionDensity_B - solutionDensity_A)) + solutionDensity_A, 5);
+                        double solutionDensity = Math.Round((ethanolReminder * (solutionDensity_B - solutionDensity_A)) + solutionDensity_A, 6);
                         return solutionDensity;
                     }
                 }
