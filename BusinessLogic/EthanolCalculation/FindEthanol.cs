@@ -1,5 +1,6 @@
 ﻿using System;
 using DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation;
+using DensityOfWaterAlcoholSolution.Helpers;
 
 namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
 {
@@ -62,7 +63,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                         "и дробные числа в русской культуре");
                     break;
                 case 1:
-                    int temperature1 = Convert.ToInt32(solutionTemperature);
+                    int temperature1 = Convert.ToInt32(solutionTemperature.DoubleParseAdvanced());
                     double density1 = solutionDensity.DoubleParseAdvanced();
                     calculatedEthanolContainment = ethCalculate.CalculateTableNumberOfEthanol(temperature1, density1);
                     if (calculatedEthanolContainment == 0)

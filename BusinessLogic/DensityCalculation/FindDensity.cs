@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using DensityOfWaterAlcoholSolution.Helpers;
 
 namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
 {
@@ -57,8 +58,8 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                             "и дробные числа в русской культуре");
                         break;
                     case 1:
-                        int temperature1 = Convert.ToInt32(solutionTemperature);
-                        int ethanolCont1 = Convert.ToInt32(ethanolContainment);
+                        int temperature1 = Convert.ToInt32(solutionTemperature.DoubleParseAdvanced());
+                        int ethanolCont1 = Convert.ToInt32(ethanolContainment.DoubleParseAdvanced());
                         calculatedSolutionDensity = denCalculate.CalculateDensity(temperature1, ethanolCont1);
                         break;
                     case 2:
@@ -67,7 +68,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.DensityCalculation
                         calculatedSolutionDensity = denCalculate.CalculateDensity(temperature2, ethanolCont2);
                         break;
                     case 3:
-                        int temperature3 = Convert.ToInt32(solutionTemperature);
+                        int temperature3 = Convert.ToInt32(solutionTemperature.DoubleParseAdvanced());
                         double ethanolCont3 = ethanolContainment.DoubleParseAdvanced();
                         calculatedSolutionDensity = denCalculate.CalculateDensity(temperature3, ethanolCont3);
                         break;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DensityOfWaterAlcoholSolution.Helpers;
+using System;
 using System.Data;
 using System.IO;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
     /// Класс методов вычислений процента содержания этанола
     /// </summary>
     /// <remarks>Методы варьируются в зависимости от типа представленных данных (целое/дробное)</remarks>
-    internal class EthanolPercentageCalculation
+    public class EthanolPercentageCalculation
     {
         #region Поля
         private DataSet ds = new DataSet();
@@ -45,14 +46,14 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
             LoadDataBase();
             string strDensity = density.ToString();
             // Если нам даны табличные значения, тогда ищем по таблице
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int t = 0; t < ds.Tables[0].Rows.Count; t++)
             {
-                int dsTemperature = int.Parse(ds.Tables[0].Rows[i][0].ToString());
+                int dsTemperature = int.Parse(ds.Tables[0].Rows[t][0].ToString());
                 if (dsTemperature == temperature)
                 {
                     for (int G = 0; G <= 100; G++)
                     {
-                        if (ds.Tables[0].Rows[i][G + 1].ToString().Equals(strDensity))
+                        if (ds.Tables[0].Rows[t][G + 1].ToString().Equals(strDensity))
                             return G;
                     }
                 }
@@ -71,23 +72,23 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
             LoadDataBase();
             string strDensity = density.ToString();
 
-            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int t = 0; t < ds.Tables[0].Rows.Count; t++)
             {
-                int dsTemperature = int.Parse(ds.Tables[0].Rows[i][0].ToString());
+                int dsTemperature = int.Parse(ds.Tables[0].Rows[t][0].ToString());
                 if (dsTemperature == temperature)
                 {
                     for (int G = 0; G <= 100; G++)
                     {
-                        if (ds.Tables[0].Rows[i][G].ToString().DoubleParseAdvanced() >= density &&
-                            ds.Tables[0].Rows[i][G + 1].ToString().DoubleParseAdvanced() <= density)
+                        if (ds.Tables[0].Rows[t][G].ToString().DoubleParseAdvanced() >= density &&
+                            ds.Tables[0].Rows[t][G + 1].ToString().DoubleParseAdvanced() <= density)
                         {
-                            string STR_nearestDensityWithEthanolAsGiven = ds.Tables[0].Rows[i][G].ToString();
-                            string STR_nearestDensityWithEthanol1PercentMore = ds.Tables[0].Rows[i][G + 1].ToString();
+                            string STR_nearestDensityWithEthanolAsGiven = ds.Tables[0].Rows[t][G].ToString();
+                            string STR_nearestDensityWithEthanol1PercentMore = ds.Tables[0].Rows[t][G + 1].ToString();
                             double densityEthanolAsGiven = STR_nearestDensityWithEthanolAsGiven.DoubleParseAdvanced();
                             double densityEthanolPLUSne = STR_nearestDensityWithEthanol1PercentMore.DoubleParseAdvanced();
                             double densityDelta = densityEthanolAsGiven - densityEthanolPLUSne;
 
-                            double ethanolContainment = G - 1  + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 4);
+                            double ethanolContainment = G - 1 + Math.Round(1 - ((density - densityEthanolPLUSne) / (densityDelta)), 4);
 
                             return ethanolContainment;
                         }
@@ -108,20 +109,20 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
         {
             LoadDataBase();
             string strDensity = density.ToString();
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int t = 0; t < ds.Tables[0].Rows.Count; t++)
             {
-                int dsTemperature = int.Parse(ds.Tables[0].Rows[i][0].ToString());
+                int dsTemperature = int.Parse(ds.Tables[0].Rows[t][0].ToString());
                 if (dsTemperature == Math.Truncate(temperature))
                 {
                     for (int G = 0; G <= 100; G++)
                     {
-                        if ((ds.Tables[0].Rows[i][G]).ToString().DoubleParseAdvanced() >= density &
-                            (ds.Tables[0].Rows[i][G + 1]).ToString().DoubleParseAdvanced() <= density)
+                        if ((ds.Tables[0].Rows[t][G]).ToString().DoubleParseAdvanced() >= density &
+                            (ds.Tables[0].Rows[t][G + 1]).ToString().DoubleParseAdvanced() <= density)
                         {
-                            string STR_nearestDensityWithTempAsGiven = ds.Tables[0].Rows[i][G + 1].ToString();
-                            string STR_nearestDensityWithTemp1GradeMore = ds.Tables[0].Rows[i + 1][G + 1].ToString();
-                            string STR_nearestDensityWithEthanolMENOSone = ds.Tables[0].Rows[i][G].ToString();
-                            string STR_nearestDensityWithEthanolMENOSoneTemperaturePLUSone = ds.Tables[0].Rows[i + 1][G].ToString();
+                            string STR_nearestDensityWithTempAsGiven = ds.Tables[0].Rows[t][G + 1].ToString();
+                            string STR_nearestDensityWithTemp1GradeMore = ds.Tables[0].Rows[t + 1][G + 1].ToString();
+                            string STR_nearestDensityWithEthanolMENOSone = ds.Tables[0].Rows[t][G].ToString();
+                            string STR_nearestDensityWithEthanolMENOSoneTemperaturePLUSone = ds.Tables[0].Rows[t + 1][G].ToString();
                             if (STR_nearestDensityWithTempAsGiven != "-" &&
                                 STR_nearestDensityWithTemp1GradeMore != "-" &&
                                 STR_nearestDensityWithEthanolMENOSone != "-" &&
@@ -131,7 +132,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                                 double densityTempAsGiven = STR_nearestDensityWithTempAsGiven.DoubleParseAdvanced();
                                 double densityTempPLUSOne = STR_nearestDensityWithTemp1GradeMore.DoubleParseAdvanced();
                                 double densityDelta_Temperature = densityTempAsGiven - densityTempPLUSOne;
-                                double temperatureReminder = Math.Ceiling(temperature) - temperature;
+                                double temperatureReminder = temperature.GetReminderPriorNextSolidNumber();
 
                                 double solutionDensity_A = (densityDelta_Temperature * temperatureReminder) + densityTempPLUSOne;
 
@@ -140,7 +141,7 @@ namespace DensityOfWaterAlcoholSolution.BusinessLogic.EthanolCalculation
                                 double solutionDensity_B = (temperatureReminder * (densityEtanolMENOSOne - densityEthanolMENOSOneTemperaturePlusOne)) + densityEthanolMENOSOneTemperaturePlusOne;
 
                                 double densityDelta = solutionDensity_B - solutionDensity_A;
-                                
+
                                 double ethanolPercentage = (G - 1) + (1 - ((density - solutionDensity_A) / densityDelta));
 
                                 return Math.Round(ethanolPercentage, 4);

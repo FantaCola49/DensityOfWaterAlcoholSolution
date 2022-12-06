@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DensityOfWaterAlcoholSolution", "DensityOfWaterAlcoholSolution.csproj", "{29D4CC9B-57AA-40A6-A7CD-2969E1C8ADD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DensityOfWaterAlcoholSolution", "DensityOfWaterAlcoholSolution.csproj", "{29D4CC9B-57AA-40A6-A7CD-2969E1C8ADD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DensityOfWaterAlcoholSolutionTests", "..\DensityOfWaterAlcoholSolutionTests\DensityOfWaterAlcoholSolutionTests.csproj", "{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5AB7D83F-2998-48F7-948C-A5D9C3733197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{29D4CC9B-57AA-40A6-A7CD-2969E1C8ADD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D4CC9B-57AA-40A6-A7CD-2969E1C8ADD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D4CC9B-57AA-40A6-A7CD-2969E1C8ADD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F5CC743-9831-49FE-8F87-1FA4BD63A3A8} = {5AB7D83F-2998-48F7-948C-A5D9C3733197}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {566147BB-4B4E-4B8E-AB88-E82145663072}
