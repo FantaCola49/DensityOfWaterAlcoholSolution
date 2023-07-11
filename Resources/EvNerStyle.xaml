@@ -53,69 +53,39 @@
     </Style>
 
     <ControlTemplate x:Key="Button_Template" TargetType="{x:Type Button}">
-        <Border BorderBrush="Black" BorderThickness="1" 
-                                TextBlock.Foreground="#ddd" MaxHeight="30" 
-                                MinWidth="80" Padding="5" Name="myBorder"
-                                MinHeight="25" CornerRadius="8,8,8,8" RenderTransformOrigin="0.5,0.5">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad">
-                    <LinearGradientBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FF131212" Offset="0.819"/>
-                    <GradientStop Color="#FF191919" Offset="0.48"/>
-                    <GradientStop Color="Black" Offset="0.101"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"
-                              VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
-        </Border>
+        <Grid>
+            <Border x:Name="myBorder" Background="Transparent" BorderBrush="Black" BorderThickness="1" CornerRadius="8" Padding="5">
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border x:Name="overlayBorder" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="8" Padding="5" Opacity="0"/>
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="myBorder" Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                            <GradientStop Color="#777777" Offset="0"></GradientStop>
-                            <GradientStop Color="#575757" Offset="1"></GradientStop>
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FFF" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
-
-                <Setter TargetName="myBorder" Property="Cursor" Value="Hand"></Setter>
+                <Setter TargetName="overlayBorder" Property="Opacity" Value="1"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter TargetName="myBorder" Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                            <GradientStop Color="#939292" Offset="0"></GradientStop>
-                            <GradientStop Color="#575757" Offset="1"></GradientStop>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-
-                <Setter TargetName="myBorder" Property="Cursor" Value="Hand"></Setter>
+                <Setter TargetName="myBorder" Property="Background" Value="White"/>
+                <Setter TargetName="overlayBorder" Property="Opacity" Value="0"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="myBorder" Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                            <GradientStop Color="#444" Offset="0"></GradientStop>
-                            <GradientStop Color="#222" Offset="1"></GradientStop>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-                <Setter TargetName="myBorder" Property="Opacity" Value="0.4"></Setter>
+                <Setter TargetName="myBorder" Property="Opacity" Value="0.4"/>
+                <Setter TargetName="overlayBorder" Property="Opacity" Value="0.4"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="overlayBorder" Property="BorderBrush" Value="Transparent"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
 
     <Style x:Key="ButtonAdjastment" TargetType="{x:Type Button}">
         <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
@@ -152,7 +122,7 @@
         </Setter>
     </Style>
 
-    <Style  x:Key="MyTextBox" TargetType="TextBox">
+    <Style x:Key="MyTextBox" TargetType="TextBox">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#1FFF"/>
@@ -164,56 +134,48 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand">
-                        <Grid.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black"/>
-                                <GradientStop Color="Gray" Offset="1"/>
-                                <GradientStop Color="Black" Offset="2"/>
-                            </LinearGradientBrush>
-                        </Grid.Background>
-                        <Border x:Name="Background" BorderThickness="0 0 0 2" CornerRadius="2" Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"/>
-
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                      Padding="{TemplateBinding Padding}"
-                                      BorderThickness="0"
-                                      IsTabStop="False"
-                                      Background="{x:Null}"
-                                      TextElement.Foreground="{TemplateBinding Foreground}"/>
-                    </Grid>
-
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Background="{x:Null}" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="#FFE3F2FD"/>
-                            <Setter Property="BorderBrush" Value="#64B5F6"/>
-                            <Setter Property="BorderThickness" Value="2"/>
-                            <Setter Property="Opacity" Value="0.9"/>
+                            <Setter TargetName="border" Property="Background" Value="White"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="White"/>
                             <Setter Property="Foreground" Value="Black"/>
                         </Trigger>
-                        <Trigger Property="IsFocused" Value="False">
-                            <Setter Property="Background" Value="#1FFF"/>
-                            <Setter Property="Opacity" Value="0.4"/>
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Setter Property="BorderThickness" Value="1"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </Trigger>
-                        <Trigger Property="IsReadOnly" Value="True">
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Background" Value="#1FFF"/>
-                            <Setter Property="BorderBrush" Value="#9E9E9E"/>
-                        </Trigger>
-                        <Trigger Property="Validation.HasError" Value="True">
-                            <Setter Property="Background" Value="#FFEBEE"/>
-                            <Setter Property="BorderBrush" Value="#F44336"/>
-                        </Trigger>
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
+    <Style x:Key="MyTextBox_2" TargetType="TextBox">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#1FFF"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Background="{x:Null}" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="White"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="White"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="TextBox" x:Key="ResultMsg_Style">
         <Setter Property="Margin" Value="25"/>
         <Setter Property="Opacity" Value="0.4"/>
@@ -251,4 +213,25 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ImageButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.8"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value="0.6"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

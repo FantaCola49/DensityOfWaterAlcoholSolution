@@ -65,5 +65,12 @@ namespace DensityOfWaterAlcoholSolution
             else
                 e.Handled = true;
         }
+
+        private void MoreInfo(object sender, RoutedEventArgs e)
+        {
+            string message = "Backend: Неретин Евгений Максимович\nFrontend: Минибаев Владислав Робертович";
+            string title = "Разработчики-авторы";
+            MessageBox.Show(message, title, MessageBoxButton.OK);
+        }
     }
 }
