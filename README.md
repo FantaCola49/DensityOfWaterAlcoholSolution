@@ -8,13 +8,13 @@ The program also allows you to find the percentage of ethanol content relative t
 **Important:** for the program to work correctly, the executable file and DensityData must be in the same folder for the program to work successfully.
 Разработчики frontend:Владислав, backend:Евгений/ Frontend developers: Vladislav, backend developers: Evgeny
 
-#Первый вариант программы/The first version of the program
+# Первый вариант программы/The first version of the program
 ![Главное окно программы](https://github.com/FantaCola49/DensityOfWaterAlcoholSolution/blob/master/Resources/Demo/1.JPG)
 
 #Переходный дизайн и правка ошибок кода/Transitional design and code bug fixes
 ![Главное окно программы](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/1.png)
 
-#Новый дизайн и добавление кнопки/New design and button addition
+# Новый дизайн и добавление кнопки/New design and button addition
 Полностью переработан дизайн программы, а также добавлена кнопка, с информацией об авторах.Удалены ненжуные слои цветов.Программа запускается практически мгновенно./The design of the program has been completely redesigned, and a button has been added with information about the authors. Unnecessary layers of colors have been removed. The program starts almost instantly.
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/1.png)
 Старая стилистика приложения/Old app style
