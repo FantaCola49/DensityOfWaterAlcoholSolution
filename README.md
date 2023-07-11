@@ -11,8 +11,10 @@ The program also allows you to find the percentage of ethanol content relative t
 # Первый вариант программы/The first version of the program
 ![Главное окно программы](https://github.com/FantaCola49/DensityOfWaterAlcoholSolution/blob/master/Resources/Demo/1.JPG)
 
+
 # Переходный дизайн и правка ошибок кода/Transitional design and code bug fixes
 ![Главное окно программы](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/1.png)
+
 
 # Новый дизайн и добавление кнопки/New design and button addition
 Полностью переработан дизайн программы, а также добавлена кнопка, с информацией об авторах.Удалены ненжуные слои цветов.Программа запускается практически мгновенно./The design of the program has been completely redesigned, and a button has been added with information about the authors. Unnecessary layers of colors have been removed. The program starts almost instantly.
