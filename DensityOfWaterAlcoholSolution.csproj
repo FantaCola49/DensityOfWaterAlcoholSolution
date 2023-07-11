@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="DensityData\data2.xml" />
     <None Remove="Resources\Pict\Dark1.png" />
+    <None Remove="Центр_ИКТ-transformed.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <Resource Include="Resources\Pict\Dark1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Центр_ИКТ-transformed.png" />
   </ItemGroup>
 
   <ItemGroup>

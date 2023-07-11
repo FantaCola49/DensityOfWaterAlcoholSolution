@@ -4,12 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Плотность водноспиртового раствора" Height="450" Width="800"
-        ResizeMode="NoResize">
+        Title="Калькулятор спирта" Height="650" Width="1000"
+        ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow">
+
     <Grid Style="{DynamicResource BackGroundGrid}">
         <Grid.Background>
-            <ImageBrush ImageSource="Resources\Pict\Dark1.png"/>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                        <RotateTransform Angle="132.064" CenterX="0.5" CenterY="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FFB6CCC6"/>
+                <GradientStop Color="#FF02F9F3" Offset="1"/>
+                <GradientStop Color="#FF84FCAC" Offset="0.485"/>
+            </LinearGradientBrush>
         </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -24,11 +38,11 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource HeaderText}" Grid.ColumnSpan="4">Плотность водноспиртового раствора в зависимости от температуры и относительного содержания спирта (по объёму) при температуре 20 C</TextBlock>
-        <TextBlock Style="{DynamicResource CalcDescriptionText}" Grid.ColumnSpan="2" Grid.Row="1">Найти плотность раствора</TextBlock>
-        <TextBlock Style="{DynamicResource CalcDescriptionText}" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" >Найти содержание этанола</TextBlock>
+        <TextBlock Style="{DynamicResource HeaderText}" Grid.Column="3" FontSize="32" FontFamily="Bahnschrift Light Condensed" Foreground="Black" TextAlignment="Right"><Run Text="Калькулятор "/><LineBreak/><Run Text="спирта"/></TextBlock>
+        <TextBlock x:Name="textBlock" Style="{DynamicResource CalcDescriptionText}" Grid.ColumnSpan="2" Grid.Row="1" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="35"><Run Text="Найти плотность "/><LineBreak/><Run Text="раствора"/></TextBlock>
+        <TextBlock Style="{DynamicResource CalcDescriptionText}" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="35" ><Run Text="Найти содержание "/><LineBreak/><Run Text="этанола"/></TextBlock>
 
-        <Grid Name="DensityCalcGrid" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2">
+        <Grid Name="DensityCalcGrid" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -39,13 +53,16 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Style="{DynamicResource ExampleTextBlock}" Text="Содержание этанола при 20С (по объёму), %"></TextBlock>
-            <TextBlock Style="{DynamicResource ExampleTextBlock}" Grid.Row="1" Text="Температура, °C"></TextBlock>
-            <TextBox Name="EthanolContainmentTB" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}"></TextBox>
-            <TextBox Name="LeftTempTB" Grid.Column="1" Grid.Row="1" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}"></TextBox>
+            <TextBlock Style="{DynamicResource ExampleTextBlock}" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="25"><Run Text="Содержание этанола "/><Run Text="%"/><Run Text=" "/><LineBreak/><Run Text="(при 20С"/><Run Text=" "/><Run Text="по объёму)  "/></TextBlock>
+            <TextBlock Style="{DynamicResource ExampleTextBlock}" Grid.Row="1" Text="Температура °C" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="25"/>
+            <TextBox Name="EthanolContainmentTB" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}" Opacity="1" BorderThickness="1" BorderBrush="Black" Foreground="Black" SelectionBrush="Black" SelectionTextBrush="Black" Background="#1FFF" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17"/>
+            <TextBox Name="LeftTempTB" Grid.Column="1" Grid.Row="1"  PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}" Opacity="1" BorderThickness="1" BorderBrush="Black" Foreground="Black" SelectionBrush="Black" SelectionTextBrush="Black" Background="#1FFF" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17"/>
 
-            <TextBox Name="SolutinDenResultTB" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" Margin="0 10 0 0" IsReadOnly="True" Style="{DynamicResource MyTextBox}" ></TextBox>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Вычислить" Click="SolutionDensityBtn" Template="{StaticResource Button_Template}" Style="{DynamicResource ButtonAdjastment}"/>
+            <TextBox Name="SolutinDenResultTB" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="170" Margin="0 10 0 0" IsReadOnly="True" Style="{DynamicResource MyTextBox_2}" BorderBrush="{x:Null}" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17" TextAlignment="Center" ></TextBox>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Вычислить" Click="SolutionDensityBtn" Template="{StaticResource Button_Template}" Style="{DynamicResource ButtonAdjastment}" FontFamily="Bahnschrift Light Condensed" FontSize="17" RenderTransformOrigin="0.19,0.567" HorizontalAlignment="Left" Margin="200,0,0,10"/>
+            <Button Grid.Row="2" Content="?" Click="MoreInfo" Template="{StaticResource Button_Template}" Style="{DynamicResource ButtonAdjastment}" FontFamily="Bahnschrift Light Condensed" FontSize="17" RenderTransformOrigin="0.19,0.567" HorizontalAlignment="Left" Width="29" Margin="2,0,0,2" Opacity="0.6"/>
+
+
         </Grid>
 
         <Grid Name="EthanolContainmentCalcGrid" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
@@ -59,15 +76,28 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Style="{DynamicResource ExampleTextBlock}"><Run Text="Плотность, г"/><Run Text="/"/><Run Text="мл"/></TextBlock>
-            <TextBlock Style="{DynamicResource ExampleTextBlock}" Grid.Row="1"  Text="Температура, °C" TextWrapping="Wrap"/>
+            <TextBlock Style="{DynamicResource ExampleTextBlock}" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="25"><Run Text="Плотность"/><Run Text=" "/><Run/><LineBreak/><Run Text="г"/><Run Text="/"/><Run Text="мл"/><Run Text=" "/></TextBlock>
+            <TextBlock Style="{DynamicResource ExampleTextBlock}" Grid.Row="1" TextWrapping="Wrap" Foreground="Black" FontFamily="Bahnschrift Light Condensed" FontSize="25"><Run Text="Температура"/><Run Language="ru-ru" Text=" "/><Run Text="°C"/></TextBlock>
 
-            <TextBox Name="SolutionDensityTB" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}"></TextBox>
-            <TextBox Name="SolutionTemperatureTB" Grid.Column="1" Grid.Row="1" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}"></TextBox>
+            <TextBox Name="SolutionDensityTB" Grid.Column="1"  PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}" Opacity="1" BorderThickness="1" BorderBrush="Black" Foreground="Black" SelectionBrush="Black" SelectionTextBrush="Black" Background="#1FFF" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17"/>
+            <TextBox Name="SolutionTemperatureTB" Grid.Column="1" Grid.Row="1"  PreviewTextInput="NumberValidationTextBox" Style="{StaticResource MyTextBox}" Opacity="1" BorderThickness="1" BorderBrush="Black" Foreground="Black" SelectionBrush="Black" SelectionTextBrush="Black" Background="#1FFF" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17"/>
+            <TextBox Name="SolutinEthanolResultTB" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="170" Margin="0 10 0 0" IsReadOnly="True" Style="{DynamicResource MyTextBox_2}" BorderBrush="{x:Null}" FontFamily="Bahnschrift Light SemiCondensed" FontSize="17" TextAlignment="Center" ></TextBox>
 
-            <TextBox Name="SolutinEthanolResultTB" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" Width="200" Margin="0 10 0 0" IsReadOnly="True" Style="{DynamicResource MyTextBox}"></TextBox>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Вычислить"  Click="EthanolContainmentBtn" Template="{StaticResource Button_Template}" Style="{DynamicResource ButtonAdjastment}"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Вычислить"  Click="EthanolContainmentBtn" Template="{StaticResource Button_Template}" Style="{DynamicResource ButtonAdjastment}" FontFamily="Bahnschrift Light Condensed" FontSize="17"/>
         </Grid>
+        <Image x:Name="Логотип_Copy" Margin="136,80,136,80" Source="/Центр_ИКТ-transformed.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-2" Grid.RowSpan="3" Opacity="0.6" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+            <Image.Effect>
+                <BlurEffect/>
+            </Image.Effect>
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
     </Grid>
 </Window>
