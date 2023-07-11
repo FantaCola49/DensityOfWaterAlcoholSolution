@@ -25,23 +25,35 @@ Frontend developers: Vladislav, backend developers: Evgeny
 
 
 # Новый дизайн и добавление кнопки/ New design and button addition
+
 Полностью переработан дизайн программы, а также добавлена кнопка, с информацией об авторах.Удалены ненжуные слои цветов.Программа запускается практически мгновенно./
 The design of the program has been completely redesigned, and a button has been added with information about the authors. Unnecessary layers of colors have been removed. The program starts almost instantly.
+
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/1.png)
+
 Старая стилистика приложения/
 Old app style
+
 ![После переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/4.png)
+
 Новая стилистика с уклоном в простоту и легкость/
 New style with a focus on simplicity and lightness
+
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/2.png)
+
 Плохая читаемость/
+
 Poor readability
 ![После переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/5.png)
+
 Хорошая читаемость/
+
 Good readability
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/3.png)
+
 Старый дизайн шрифтов/
 Old font design
 ![После переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/6.png)
+
 Новый дизайн шрифтов и добавлена кнопка с информацией о разработчиках/
 New font design and added developer information button
