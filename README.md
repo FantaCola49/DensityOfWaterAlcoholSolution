@@ -42,17 +42,18 @@ New style with a focus on simplicity and lightness
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/2.png)
 
 Плохая читаемость/
-
 Poor readability
+
 ![После переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/5.png)
 
 Хорошая читаемость/
-
 Good readability
+
 ![До переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/3.png)
 
 Старый дизайн шрифтов/
 Old font design
+
 ![После переработки](https://github.com/Bibosiandre/DensityOfWaterAlcoholSolution/blob/master/demo/6.png)
 
 Новый дизайн шрифтов и добавлена кнопка с информацией о разработчиках/
